@@ -8,11 +8,10 @@ const fetchPlanetsAndCharacters = async () => {
     const planets = await planetResults.json();
     const characters = await charactersResults.json();
 
-    console.log('Characters:', characters);
-    console.log('Planets:', planets);
+    return { planets, characters };
   } catch (error) {
     console.error('Sentimos muito, mas a requisição falhou:', error);
   }
 };
 
-fetchPlanetsAndCharacters();
+export default fetchPlanetsAndCharacters;

@@ -3,25 +3,24 @@ import PropTypes from 'prop-types';
 import fetchPlanetsAndCharacters from '../services/fetchPlanetsAndCharacters';
 import PlanetsAndCharactersContext from './PlanetsAndCharactersContext';
 
-function PlanetProvider({ children }) {
-  const [loading, setLoading] = useState(true);
-  const [result, setResult] = useState([]);
-
+function PlanetsAndCharactersProvider({ children }) {
+  const [planets, setPlanets] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     async function fetchApi() {
       const data = await fetchPlanetsAndCharacters();
-      setResult(data);
-      setLoading(false);
-    }
-    fetchApi();
+      setPlanets(data.planets);
+      setCharacters(data.characters);
+      }
+      fetchApi();
   }, []);
 
   const info = {
-    loading, 
-    setLoading,
-    result,
-    setResult
+    planets,
+    setPlanets,
+    characters,
+    setCharacters
   };
 
   return (
@@ -31,8 +30,8 @@ function PlanetProvider({ children }) {
   );
 }
 
-PlanetProvider.propTypes = {
+PlanetsAndCharactersContext.propTypes = {
   children: PropTypes.any,
 }.isRequired;
 
-export default PlanetProvider;
+export default PlanetsAndCharactersProvider;
