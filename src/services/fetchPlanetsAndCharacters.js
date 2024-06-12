@@ -1,17 +1,28 @@
-const fetchPlanetsAndCharacters = async () => {
+const fetchCharacters = async (url = 'https://swapi.dev/api/people/?page=1') => {
   try {
-    const planetUrl = fetch('https://swapi.dev/api/planets/');
-    const characterUrl = fetch('https://swapi.dev/api/people/');
+    const characterUrl = await fetch(url);
 
-    const [planetResults, charactersResults] = await Promise.all([planetUrl, characterUrl]);
+    const characters = await characterUrl.json();
 
-    const planets = await planetResults.json();
-    const characters = await charactersResults.json();
-
-    return { planets, characters };
+    return { characters: characters.results, newCharacterPage: characters.next };
   } catch (error) {
     console.error('Sentimos muito, mas a requisição falhou:', error);
   }
 };
 
-export default fetchPlanetsAndCharacters;
+const fetchPlanets = async (oldPlanets = [], url = 'https://swapi.dev/api/planets/') => {
+  try {
+    const planetUrl = await fetch(url);
+    const planets = await planetUrl.json();
+    const newPlanets = [...oldPlanets, ...planets.results];
+    if(planets.next) {
+      return fetchPlanets(newPlanets, planets.next);
+    }
+
+    return newPlanets;
+  } catch (error) {
+    console.error('Sentimos muito, mas a requisição falhou:', error);
+  }
+};
+
+export { fetchPlanets, fetchCharacters };
