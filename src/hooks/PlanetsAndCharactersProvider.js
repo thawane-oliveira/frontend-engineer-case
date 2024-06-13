@@ -6,18 +6,19 @@ import PlanetsAndCharactersContext from './PlanetsAndCharactersContext';
 function PlanetsAndCharactersProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [characters, setCharacters] = useState([]);
-  const [newCharacterPage, setNewCharacterPage] = useState('');
+  const [nextCharacterPage, setNextCharacterPage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchApi() {
-      const planets = await fetchPlanets();
-      const characters = await fetchCharacters();
+      const planetsResult = await fetchPlanets();
+      const charactersResult = await fetchCharacters();
 
-      setPlanets(planets);
-      setCharacters(characters.characters);
-      setNewCharacterPage(characters.newCharacterPage);
+      setPlanets(planetsResult);
+      setCharacters(charactersResult.characters);
+      setNextCharacterPage(charactersResult.nextPage);
       setIsLoading(false);
+      console.log(nextCharacterPage);
     }
     fetchApi();
   }, []);
@@ -27,8 +28,8 @@ function PlanetsAndCharactersProvider({ children }) {
     setPlanets,
     characters,
     setCharacters,
-    newCharacterPage, 
-    setNewCharacterPage,
+    nextCharacterPage, 
+    setNextCharacterPage,
     isLoading
   };
 

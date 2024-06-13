@@ -1,8 +1,17 @@
 import React, { useContext } from "react";
 import PlanetsAndCharactersContext from '../hooks/PlanetsAndCharactersContext';
+import { fetchCharacters } from "../services/fetchPlanetsAndCharacters";
 
 function Section() {
-  const { characters, isLoading, planets } = useContext(PlanetsAndCharactersContext);
+  const { characters, isLoading, planets, nextCharacterPage, setNextCharacterPage, setCharacters } = useContext(PlanetsAndCharactersContext);
+
+  const handleClick = async () => {
+    const result = await fetchCharacters(nextCharacterPage);
+    setNextCharacterPage(result.nextPage);
+    const newCharacters = [...characters, ...result.characters];
+    setCharacters(newCharacters);
+  }
+
   return (
     <>
       <h2>All Characters</h2>
@@ -25,7 +34,7 @@ function Section() {
             )))
         }
       </div>
-      <button>LOAD MORE</button>
+      <button disabled={!nextCharacterPage} onClick={handleClick}>LOAD MORE </button>
     </>
   );
 }
