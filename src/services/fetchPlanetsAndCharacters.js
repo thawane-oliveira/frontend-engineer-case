@@ -3,7 +3,6 @@ const fetchCharacters = async (url = 'https://swapi.dev/api/people/?page=1') => 
     const characterUrl = await fetch(url);
     const characters = await characterUrl.json();
 
-      console.log('testa se o botão chega aqui', characters.results, characters.next);
       return { characters: characters.results, nextPage: characters.next };
 
   } catch (error) {

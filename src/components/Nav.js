@@ -2,14 +2,25 @@ import { useContext } from "react";
 import PlanetsAndCharactersContext from "../hooks/PlanetsAndCharactersContext";
 
 function Nav() {
-  const { planets } = useContext(PlanetsAndCharactersContext);
+  const { planets, selectedPlanet, setSelectedPlanet } = useContext(PlanetsAndCharactersContext);
+
+  const handlePlanetChange = (value) => {
+    setSelectedPlanet(value);
+  };
+
+  const handleClear = () => {
+    setSelectedPlanet('all');
+  };
+
   return (
     <>
       <div>
         <label>
           Filter By:
-          <select>
-            <option>All</option>
+          <select
+            value={selectedPlanet}
+            onChange={(e) => handlePlanetChange(e.target.value)}>
+            <option value={'all'}>All</option>
             {planets.map((planet) => (
               <option key={planet.name} value={planet.name}>
                 {planet.name}
@@ -18,7 +29,7 @@ function Nav() {
           </ select >
         </label>
       </div>
-      <button>CLEAR ALL</button>
+      <button onClick={handleClear}>CLEAR ALL</button>
     </>
   );
 }

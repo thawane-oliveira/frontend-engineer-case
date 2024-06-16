@@ -8,6 +8,8 @@ function PlanetsAndCharactersProvider({ children }) {
   const [characters, setCharacters] = useState([]);
   const [nextCharacterPage, setNextCharacterPage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [selectedPlanet, setSelectedPlanet] = useState('all');
 
   useEffect(() => {
     async function fetchApi() {
@@ -16,9 +18,9 @@ function PlanetsAndCharactersProvider({ children }) {
 
       setPlanets(planetsResult);
       setCharacters(charactersResult.characters);
+      setFilteredCharacters(charactersResult.characters);
       setNextCharacterPage(charactersResult.nextPage);
       setIsLoading(false);
-      console.log(nextCharacterPage);
     }
     fetchApi();
   }, []);
@@ -30,6 +32,10 @@ function PlanetsAndCharactersProvider({ children }) {
     setCharacters,
     nextCharacterPage, 
     setNextCharacterPage,
+    filteredCharacters,
+    setFilteredCharacters,
+    selectedPlanet,
+    setSelectedPlanet,
     isLoading
   };
 

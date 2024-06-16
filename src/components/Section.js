@@ -1,16 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PlanetsAndCharactersContext from '../hooks/PlanetsAndCharactersContext';
 import { fetchCharacters } from "../services/fetchPlanetsAndCharacters";
 
 function Section() {
-  const { characters, isLoading, planets, nextCharacterPage, setNextCharacterPage, setCharacters } = useContext(PlanetsAndCharactersContext);
+  const {
+    isLoading,
+    planets,
+    nextCharacterPage, setNextCharacterPage,
+    characters, setCharacters,
+    filteredCharacters, setFilteredCharacters,
+    selectedPlanet,
+  } = useContext(PlanetsAndCharactersContext);
 
   const handleClick = async () => {
     const result = await fetchCharacters(nextCharacterPage);
     setNextCharacterPage(result.nextPage);
     const newCharacters = [...characters, ...result.characters];
     setCharacters(newCharacters);
-  }
+  };
+
+  useEffect(() => {
+    if (selectedPlanet === 'all') {
+      setFilteredCharacters(characters);
+    } else {
+      const filtered = characters.filter((character) => {
+        const characterPlanet = planets.find((planet) => planet.url === character.homeworld)?.name;
+        return characterPlanet === selectedPlanet;
+      });
+      setFilteredCharacters(filtered);
+    }
+  }, [selectedPlanet, characters, planets, setFilteredCharacters]);
 
   return (
     <>
@@ -19,22 +38,22 @@ function Section() {
         {
           isLoading ?
             <p>Loading...</p> :
-            (characters && characters.map((character) => (
+            (filteredCharacters && filteredCharacters.map((character) => (
               <article className="characterItem" key={character.created}>
                 <img className="characterImg"
-                  alt="teste"
+                  alt="character"
                   src={`https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/200/300`} />
                 <p className="characterText">{character.name}</p>
                 <p>{planets
                   .find((planet) => planet.url === character.homeworld)?.name}</p>
-                <p>{character.height}</p>
-                <p>{character.mass}</p>
-                <p>{character.gender}</p>
+                <p>Height • {character.height}</p>
+                <p>Mass • {character.mass}</p>
+                <p>Gender • {character.gender}</p>
               </article>
             )))
         }
       </div>
-      <button disabled={!nextCharacterPage} onClick={handleClick}>LOAD MORE </button>
+      <button disabled={!nextCharacterPage} onClick={handleClick}>LOAD MORE</button>
     </>
   );
 }
