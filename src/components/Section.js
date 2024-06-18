@@ -34,25 +34,25 @@ function Section() {
   return (
     <>
       <h2>All Characters</h2>
-      <div className="characterContainer">
+      <div className='characterContainer'>
         {
           isLoading ?
             <h1>Loading...</h1> :
             (filteredCharacters && filteredCharacters.map((character) => (
               <article
                 data-testid='character'
-                className="characterItem"
+                className='characterItem'
                 key={character.created}
               >
-                <img className="characterImg"
-                  alt="character"
+                <img className='characterImg'
+                  alt='character'
                   src={`https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/200/300`} />
-                <p className="characterText">{character.name}</p>
+                <p className='characterText'>{character.name}</p>
                 <p>{planets
                   .find((planet) => planet.url === character.homeworld)?.name}</p>
-                <p className="hiddenInMobile">Height • {character.height}</p>
-                <p className="hiddenInMobile">Mass • {character.mass}</p>
-                <p className="hiddenInMobile">Gender • {character.gender}</p>
+                <p className='hiddenInMobile'>Height • {character.height}</p>
+                <p className='hiddenInMobile'>Mass • {character.mass}</p>
+                <p className='hiddenInMobile'>Gender • {character.gender}</p>
               </article>
             )))
         }
