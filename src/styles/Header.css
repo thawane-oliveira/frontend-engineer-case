@@ -1,0 +1,44 @@
+.main-header {
+  /* display: inline-block; */
+  height: auto;
+  gap: 25px;
+  width: calc(100vw - 50px);
+  margin: 0 auto;
+}
+
+.header-title {
+  color: #333333;  
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+
+.header-paragraph {
+  color: #666666;  
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+  letter-spacing: 0.92px;
+}
+
+
+@media only screen and (min-width: 864px) {
+  .main-header {
+    width: calc(100vw - 80px);
+  }
+
+  .header-title {
+    font-size: 3.375rem;
+  }
+
+  .header-paragraph {
+    color: #666666;  
+    font-size: 1.375rem;
+  }
+}
+
+@media only screen and (min-width: 1152px) {
+  .main-header {
+    width: calc(100vw - 100px);
+  }
+}

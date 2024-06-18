@@ -1,6 +1,19 @@
-body {
-  width: 100vw;
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+
+html {
+  font-size: 16px;
 }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  width: 100vw;
+  padding: 5rem 0rem;
+}
+
+.hiddenInMobile {
+  display: none;
+}
+
 .characterContainer {
   display: flex;
   flex-wrap: wrap;
@@ -20,6 +33,10 @@ body {
 @media only screen and (min-width: 864px) {
   .characterItem {
     width: 33%
+  }
+
+  .hiddenInMobile {
+    display: block;
   }
 }
 

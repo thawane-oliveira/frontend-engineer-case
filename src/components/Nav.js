@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import PlanetsAndCharactersContext from "../hooks/PlanetsAndCharactersContext";
+import '../styles/Nav.css';
 
 function Nav() {
   const { planets, selectedPlanet, setSelectedPlanet } = useContext(PlanetsAndCharactersContext);
@@ -14,22 +15,35 @@ function Nav() {
 
   return (
     <>
-      <div>
-        <label>
+      <div className='filter-container'>
+        <label className='filter-label'>
           Filter By:
           <select
+            data-testid='planetFilter'
+            className='filter-select'
             value={selectedPlanet}
             onChange={(e) => handlePlanetChange(e.target.value)}>
-            <option value={'all'}>All</option>
+            <option
+              value={'all'}
+              className='filter-option'
+            >All</option>
             {planets.map((planet) => (
-              <option key={planet.name} value={planet.name}>
+              <option
+                className='filter-option'
+                key={planet.name}
+                value={planet.name}>
                 {planet.name}
               </option>
             ))}
           </ select >
         </label>
       </div>
-      <button onClick={handleClear}>CLEAR ALL</button>
+      <button
+        className='filter-button'
+        onClick={handleClear}
+      >
+        CLEAR ALL
+      </button>
     </>
   );
 }

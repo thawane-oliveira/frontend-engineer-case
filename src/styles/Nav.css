@@ -1,0 +1,20 @@
+.filter-container {
+  display: inline;
+  height: auto;
+  width: 1920px
+}
+
+.filter-label {}
+
+.filter-select {}
+
+.filter-option {}
+
+.filter-button {
+  border: 1px;
+  color: #C8C8C8;
+  font-family: Arial;
+  font-weight: 400;
+  height: auto;
+  width: auto
+}
