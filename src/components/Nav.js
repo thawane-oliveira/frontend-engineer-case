@@ -14,10 +14,12 @@ function Nav() {
   };
 
   return (
-    <>
+    <nav className='nav-container'>
       <div className='filter-container'>
-        <label className='filter-label'>
-          Filter By:
+        <div className='select-container'>
+          <label className='filter-label'>
+            Filter By:
+          </label>
           <select
             data-testid='planetFilter'
             className='filter-select'
@@ -35,16 +37,16 @@ function Nav() {
                 {planet.name}
               </option>
             ))}
-          </ select >
-        </label>
+          </select>
+        </div>
+        <button
+          className='filter-button'
+          onClick={handleClear}
+        >
+          CLEAR ALL
+        </button>
       </div>
-      <button
-        className='filter-button'
-        onClick={handleClear}
-      >
-        CLEAR ALL
-      </button>
-    </>
+    </nav>
   );
 }
 
