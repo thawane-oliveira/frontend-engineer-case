@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import PlanetsAndCharactersContext from '../hooks/PlanetsAndCharactersContext';
 import { fetchCharacters } from "../services/fetchPlanetsAndCharacters";
+import '../styles/Section.css';
 
 function Section() {
   const {
@@ -32,33 +33,41 @@ function Section() {
   }, [selectedPlanet, characters, planets, setFilteredCharacters]);
 
   return (
-    <>
-      <h2>All Characters</h2>
-      <div className='characterContainer'>
+    <section className='section-container'>
+      <h2 className='section-title'>All Characters</h2>
+      <div className='character-container'>
         {
           isLoading ?
             <h1>Loading...</h1> :
             (filteredCharacters && filteredCharacters.map((character) => (
               <article
                 data-testid='character'
-                className='characterItem'
+                className='character-item'
                 key={character.created}
               >
-                <img className='characterImg'
+                <img className='character-img'
                   alt='character'
                   src={`https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/200/300`} />
-                <p className='characterText'>{character.name}</p>
-                <p>{planets
-                  .find((planet) => planet.url === character.homeworld)?.name}</p>
-                <p className='hiddenInMobile'>Height • {character.height}</p>
-                <p className='hiddenInMobile'>Mass • {character.mass}</p>
-                <p className='hiddenInMobile'>Gender • {character.gender}</p>
+                  <div className='character-text'>
+                    <h4 className='character-name'>{character.name}</h4>
+                    <h5 className='character-planet'>{planets
+                      .find((planet) => planet.url === character.homeworld)?.name}</h5>
+                    <p className='hidden-in-mobile'>Height • {character.height}</p>
+                    <p className='hidden-in-mobile'>Mass • {character.mass}</p>
+                    <p className='hidden-in-mobile'>Gender • {character.gender}</p>
+                  </div>
               </article>
             )))
         }
       </div>
-      <button disabled={!nextCharacterPage} onClick={handleClick}>LOAD MORE</button>
-    </>
+      <button
+        className='load-button'
+        disabled={!nextCharacterPage}
+        onClick={handleClick}
+      >
+        LOAD MORE
+      </button>
+    </section>
   );
 }
 

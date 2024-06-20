@@ -7,53 +7,5 @@ html {
 body {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   width: 100vw;
-  padding: 5rem 0rem;
-}
-
-.hiddenInMobile {
-  display: none;
-}
-
-.characterContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.characterItem {
-  width: 100%
-}
-
-@media only screen and (min-width: 640px) {
-  .characterItem {
-    width: 50%
-  }
-}
-
-@media only screen and (min-width: 864px) {
-  .characterItem {
-    width: 33%
-  }
-
-  .hiddenInMobile {
-    display: block;
-  }
-}
-
-@media only screen and (min-width: 1152px) {
-  .characterItem {
-    width: 25%
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .characterItem {
-    width: 20%
-  }
-}
-
-@media only screen and (min-width: 1728px) {
-  .characterItem {
-    width: 16.6%
-  }
+  padding: 2.5rem 0rem;
 }
