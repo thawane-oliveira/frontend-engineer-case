@@ -40,7 +40,7 @@ function Nav() {
           </select>
         </div>
         <button
-          className='filter-button'
+          className='clear-button'
           onClick={handleClear}
         >
           CLEAR ALL

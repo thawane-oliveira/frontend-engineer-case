@@ -20,6 +20,10 @@ function Section() {
     setCharacters(newCharacters);
   };
 
+  const screenSize = () => {
+    console.log(window.innerWidth);
+  }
+
   useEffect(() => {
     if (selectedPlanet === 'all') {
       setFilteredCharacters(characters);
@@ -39,7 +43,7 @@ function Section() {
         {
           isLoading ?
             <h1>Loading...</h1> :
-            (filteredCharacters && filteredCharacters.map((character) => (
+            (filteredCharacters && filteredCharacters.map((character, index) => (
               <article
                 data-testid='character'
                 className='character-item'
@@ -47,7 +51,7 @@ function Section() {
               >
                 <img className='character-img'
                   alt='character'
-                  src={`https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/200/300`} />
+                  src={`https://picsum.photos/500/250?random=${index}`} />
                   <div className='character-text'>
                     <h4 className='character-name'>{character.name}</h4>
                     <h5 className='character-planet'>{planets

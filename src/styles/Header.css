@@ -28,7 +28,8 @@
   }
 
   .header-title {
-    font-size: 3.375rem;    
+    font-size: 3.375rem;
+    margin: 4.125rem 0 0.99rem;
   }
 
   .header-paragraph {
@@ -36,6 +37,7 @@
     font-size: 1.375rem;
     line-height: 2rem;
     letter-spacing: 0.92px;
+    margin: 0.95rem 0 2.9375rem;
     padding-top: 1.625rem;
     width: 52.747%;
   }
