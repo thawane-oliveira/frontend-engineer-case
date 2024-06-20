@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import PlanetsAndCharactersContext from '../hooks/PlanetsAndCharactersContext';
 import { fetchCharacters } from "../services/fetchPlanetsAndCharacters";
 import '../styles/Section.css';
+import Loading from "./Loading";
 
 function Section() {
   const {
@@ -19,10 +20,6 @@ function Section() {
     const newCharacters = [...characters, ...result.characters];
     setCharacters(newCharacters);
   };
-
-  const screenSize = () => {
-    console.log(window.innerWidth);
-  }
 
   useEffect(() => {
     if (selectedPlanet === 'all') {
@@ -42,7 +39,7 @@ function Section() {
       <div className='character-container'>
         {
           isLoading ?
-            <h1>Loading...</h1> :
+            <Loading /> :
             (filteredCharacters && filteredCharacters.map((character, index) => (
               <article
                 data-testid='character'
@@ -52,25 +49,27 @@ function Section() {
                 <img className='character-img'
                   alt='character'
                   src={`https://picsum.photos/500/250?random=${index}`} />
-                  <div className='character-text'>
-                    <h4 className='character-name'>{character.name}</h4>
-                    <h5 className='character-planet'>{planets
-                      .find((planet) => planet.url === character.homeworld)?.name}</h5>
-                    <p className='hidden-in-mobile'>Height • {character.height}</p>
-                    <p className='hidden-in-mobile'>Mass • {character.mass}</p>
-                    <p className='hidden-in-mobile'>Gender • {character.gender}</p>
-                  </div>
+                <div className='character-text'>
+                  <h4 className='character-name'>{character.name}</h4>
+                  <h5 className='character-planet'>{planets
+                    .find((planet) => planet.url === character.homeworld)?.name}</h5>
+                  <p className='hidden-in-mobile'>HEIGHT <span className='caractere'>•</span> {character.height.toUpperCase()}</p>
+                  <p className='hidden-in-mobile'>MASS <span className='caractere'>•</span> {character.mass.toUpperCase()}</p>
+                  <p className='hidden-in-mobile'>GENDER <span className='caractere'>•</span> {character.gender.toUpperCase()}</p>
+                </div>
               </article>
             )))
         }
       </div>
-      <button
-        className='load-button'
-        disabled={!nextCharacterPage}
-        onClick={handleClick}
-      >
-        LOAD MORE
-      </button>
+      <div className='load-div'>
+        <button
+          className='load-button'
+          disabled={!nextCharacterPage}
+          onClick={handleClick}
+        >
+          LOAD MORE
+        </button>
+      </div>
     </section>
   );
 }

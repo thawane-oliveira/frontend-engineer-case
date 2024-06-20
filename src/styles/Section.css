@@ -108,8 +108,47 @@
     flex-basis: calc(100% / var(--cols) - var(--gap) / var(--cols) * (var(--cols) - 1));
   }
 
+  .character-text {
+    margin-top: 1rem;
+    width: 100%
+  }
+
+  .character-name {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .character-planet {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.725rem;
+  }
+
   .hidden-in-mobile {
+    color: #757575;
     display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1rem;
+    width: 100%;
+  }
+
+  .caractere {
+    font-size: 0.5rem;
+  }
+
+  .load-dive {
+    margin: 0 auto;
+    width: calc(100vw - 100px);
+  }
+
+  .load-button {
+    font-size: 0.875rem;
+    padding: 0.0625rem 0;
+    width: 26.855%;
   }
 
   .section-container {

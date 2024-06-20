@@ -1,0 +1,38 @@
+.loading-container {
+  margin: 0 auto;
+  width: calc(100vw - 40px);
+}
+
+.loading-image-container {
+  height: 40%;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.loading-image {
+  height: 60%;
+}
+
+.loading-p {
+  color: #002B53;
+  font-size: 1.35rem;
+  margin: 0 auto;
+  text-align: center;
+  width: 25%;
+}
+
+
+@media only screen and (min-width: 864px) {
+  .loading-container {
+    width: calc(100vw - 100px);
+  }
+
+  .loading-image-container {
+    height: 50%;
+  }
+  
+  .loading-image {
+    height: 70%;
+  }
+}
