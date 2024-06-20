@@ -8,6 +8,7 @@ The application was built using ReactJS, Context API for state management, and C
 - Allows filtering characters by planets/homeworld, and the applied filter can be cleared.
 - Enables loading more characters by clicking the "Load More" button.
 - Responsive CSS, functional on both desktop and mobile.
+- The application can be viewed in: https://frontend-engineer-case.vercel.app/
 
 ## How to Run the Project
 
