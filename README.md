@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Star Wars Planets Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application was built using ReactJS, Context API for state management, and CSS for styling.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Displays a list of Star Wars characters from the swapi.dev API. While the request is being made, a loading notice is displayed.
+- Allows filtering characters by planets/homeworld, and the applied filter can be cleared.
+- Enables loading more characters by clicking the "Load More" button.
+- Responsive CSS, functional on both desktop and mobile.
 
-### `npm start`
+## How to Run the Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Follow the instructions below to run the project in your local environment:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository.
+2. Open the terminal and navigate to the `frontend-engineer-case` folder.
+3. Run the command `npm install` or `npm i` to install the dependencies.
+4. After installation, type `npm start` to start the application.
+5. Access the application in your browser at `http://localhost:3000`.
 
-### `npm test`
+## Decisions and Tradeoffs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The mission here was to apply pure CSS that could get as close as possible to the proposed Figma design.
+- It was decided to keep 4 photos per line, even though the people result returns 10 items, as clicking load more will complete the space.
+- Why React and not Next? The intention was to reinforce what has already been learned.
+- The loading was a tradeoff to avoid displaying a blank screen while the request is being made.
 
-### `npm run build`
+## Improvement Opportunities
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Perform coverage testing for individual components and end-to-end testing.
+- Add an error notice in case the request fails, prompting the user to reload the page.
+- Allow combining filters from multiple planets.
